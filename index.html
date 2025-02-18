@@ -202,63 +202,49 @@
   </div>
   
   <script>
-    // Function to redirect to the local game file
     function redirectTo(link) {
       window.location.href = link;
     }
-    
-    // Update the games array to use local file paths.
-    // Ensure that these files exist in your repository.
     const games = [
-      { title: "Chrome Dino Game", link: "1 Unblocked Games/chrome-dino-game/index.html" },
-      { title: "Cookie Clicker", <a href="1 Unblocked Games/？Cookie Clicker 2.054 (100%)/Cookie Clicker"> }, 
-      { title: "Connect 4", link: "games/connect-4/index.html" },
-      { title: "CSGO Clicker", link: "games/csgo-clicker/index.html" },
-      { title: "Doge Miner", link: "games/doge-miner/index.html" },
-      { title: "Doodle Jump", link: "games/doodle-jump/index.html" },
-      { title: "Tetris", link: "games/tetris/index.html" },
-      { title: "Worlds Hardest Game", link: "games/worlds-hardest-game/index.html" },
-      { title: "XX142-B2.exe", link: "games/xx142-b2/index.html" },
-      { title: "You Are Jeff Bezos", link: "games/you-are-jeff-bezos/index.html" },
-      { title: "9007199254740992", link: "games/9007199254740992/index.html" },
-      { title: "2048", link: "games/2048/index.html" },
-      { title: "Solitaire", link: "games/solitaire/index.html" },
-      { title: "Pong", link: "games/pong/index.html" },
-      { title: "Discord", link: "games/discord/index.html" },
-      { title: "Wordle", link: "games/wordle/index.html" },
+      { title: "Chrome Dino Game", link: "1 Unblocked Games/？Chrome Dino Game (100%)/index.html" },
+      { title: "Cookie Clicker", link: "1 Unblocked Games/？Cookie Clicker 2.054 (100%)/Cookie Clicker" },
+      { title: "Connect 4", link: "1 Unblocked Games/！Connect 4 (100%)/connect4.html" },
+      { title: "CSGO Clicker", link: "1 Unblocked Games/？CSGO Clicker (100%)/index.html" },
+      { title: "Doge Miner", link: "1 Unblocked Games/？Doge Miner (100%)/index.html" },
+      { title: "Doodle Jump", link: "1 Unblocked Games/？Doodle Jump (100%)/index.html" },
+      { title: "Tetris", link: "1 Unblocked Games/！Tetris (100%)/index.html" },
+      { title: "Worlds Hardest Game", link: "1 Unblocked Games/？Worlds Hardest Game (100%)/index.html" },
+      { title: "XX142-B2.exe", link: "1 Unblocked Games/？XX142-B2.exe (100%)/index.html" },
+      { title: "You Are Jeff Bezos", link: "1 Unblocked Games/？You Are Jeff Bezos (100%)/index.html" },
+      { title: "9007199254740992", link: "1 Unblocked Games/？9007199254740992 (100%)/index.html" },
+      { title: "2048", link: "1 Unblocked Games/？2048 (100%)/index.html" },
+      { title: "Solitaire", link: "1 Unblocked Games/！Solitaire (100%)/index.html" },
+      { title: "Pong", link: "1 Unblocked Games/！Pong (100%)/Pong.html" },
+      { title: "Discord", link: "2 Blocking Bypasses/！Unblocked Discord (100%)/Unblocked Discord V2.0/Unblocked Discord.html" },
+      { title: "Wordle", link: "1 Unblocked Games/！Wordle (100%)/index.html" }
     ];
-    
     const grid = document.querySelector(".games-grid");
     games.forEach(game => {
-      // Create a div for the game widget
       let card = document.createElement("div");
       card.className = "game-widget";
-      // Use the onclick event to redirect to the local file
       card.setAttribute("onclick", "redirectTo('" + game.link + "')");
-  
       let icon = document.createElement("img");
       icon.className = "game-icon";
       icon.src = "https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&";
       icon.alt = game.title + " icon";
-  
       let image = document.createElement("div");
       image.className = "game-image";
       image.appendChild(icon);
-  
       let text = document.createElement("div");
       text.className = "game-title";
       text.textContent = game.title;
-  
       card.appendChild(image);
       card.appendChild(text);
       grid.appendChild(card);
     });
-    
-    // Widgetbot, drag, resize, and modal functionality scripts remain unchanged.
     const widgetContainer = document.getElementById("widgetbot-container"),
           dragHandle = document.getElementById("drag-handle"),
           reopenWidgetBtn = document.getElementById("reopen-widget");
-    
     dragHandle.addEventListener("mousedown", function(e) {
       e.preventDefault();
       const rect = widgetContainer.getBoundingClientRect(),
@@ -275,7 +261,6 @@
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
     });
-    
     function minimizeWidget() {
       widgetContainer.style.display = "none";
       reopenWidgetBtn.style.display = "flex";
@@ -304,7 +289,6 @@
       }
     }
     reopenWidgetBtn.ondragstart = function() { return false; }
-    
     const resizer = document.getElementById("resizer");
     resizer.addEventListener("mousedown", initResize);
     function initResize(e) {
@@ -321,11 +305,9 @@
       window.removeEventListener("mousemove", Resize);
       window.removeEventListener("mouseup", stopResize);
     }
-    
     const infoBtn = document.getElementById("info-btn");
     const infoModal = document.getElementById("info-modal");
     const closeInfo = document.getElementById("close-info");
-    
     infoBtn.addEventListener("click", () => {
       infoModal.style.display = "flex";
     });
