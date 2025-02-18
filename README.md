@@ -16,7 +16,7 @@
 ## Usage
 * To start playing Unblocked Games Github, you can download the apps/games from the link provided below.
  
-### [DOWNLOAD HERE](https://github.com/FurtiveThomas/Unbore_Yourself_in_School/archive/refs/heads/main.zip)
+### [DOWNLOAD HERE](https://github.com/FurtiveThomas/Unblocked-Games/archive/refs/heads/main.zip)
 
 ## Instructions
 * Download the html files from the link above.
@@ -30,11 +30,8 @@
 * If something has a " ！" at the start of a it means I made said thing.
 * If something has a " ？" it means it is something that was made already and I unblocked said thing.
 * If something has a " % " and some numbers that is the chance of said thing being unblocked. 
-* Put games you want in the [issues tab](https://github.com/FurtiveThomas/Unbore_Yourself_in_School/issues/new?template=add-.md)/[discussions tab](https://github.com/FurtiveThomas/Unbore_Yourself_in_School/discussions/4) and I will try my best to add them
 * My Youtube if there is any doubters: https://www.youtube.com/@%CE%99%CE%9E%CE%9E%CE%99 
-### Partners
-* [Unblocked Zone Website](https://unblockzone.github.io/)
-* [Unblocked Zone Discord](https://discord.gg/XRkQyY2Hhy)
+
 
 
 
