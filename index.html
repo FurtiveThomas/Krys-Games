@@ -24,7 +24,7 @@
       margin: 0;
       font-size: 2rem;
     }
-   #info-btn {
+    #info-btn {
       position: absolute;
       right: 20px;
       top: 20px;
@@ -41,7 +41,8 @@
       gap: 15px;
       padding: 20px;
     }
-    .game-card {
+    /* Game widget styles */
+    .game-widget {
       background: #1a1a1a;
       padding: 10px;
       border: 1px solid #333;
@@ -50,10 +51,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-decoration: none;
-      color: inherit;
+      cursor: pointer;
     }
-    .game-card:hover {
+    .game-widget:hover {
       transform: scale(1.05);
     }
     .game-image {
@@ -73,6 +73,7 @@
       margin-top: 10px;
       font-size: 1rem;
     }
+    /* Widgetbot and modal styles remain unchanged */
     #widgetbot-container {
       position: fixed;
       top: 0;
@@ -141,7 +142,7 @@
       font-weight: bold;
       user-select: none;
     }
- #info-modal {
+    #info-modal {
       position: fixed;
       top: 0;
       left: 0;
@@ -179,7 +180,9 @@
   <main>
     <div class="games-grid"></div>
   </main>
-<div id="widgetbot-container">
+  
+  <!-- Widgetbot container and modal code -->
+  <div id="widgetbot-container">
     <div class="drag-handle" id="drag-handle">
       Drag
       <span class="minimize-btn" onclick="minimizeWidget()">–</span>
@@ -192,59 +195,70 @@
     <div class="modal-content">
       <h2>About</h2>
       <p>Let me know about bugs or broken games</p>
-	  <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
-	  <p>Github:  <a href="hhttps://github.com/FurtiveThomas/Unbore_Yourself_in_School">HERE</a></p>
+      <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
+      <p>Github: <a href="https://github.com/FurtiveThomas/Unbore_Yourself_in_School">HERE</a></p>
       <button class="close-btn" id="close-info">Close</button>
     </div>
   </div>
   
   <script>
+    // Function to redirect to the local game file
+    function redirectTo(link) {
+      window.location.href = link;
+    }
+    
+    // Update the games array to use local file paths.
+    // Ensure that these files exist in your repository.
     const games = [
-      { title: "Chrome Dino Game", link: "https://example.com/chrome-dino-game" },
-      { title: "Cookie Clicker", link: "https://example.com/cookie-clicker" },
-      { title: "Connect 4", link: "https://example.com/connect-4" },
-      { title: "CSGO Clicker", link: "https://example.com/csgo-clicker" },
-      { title: "Doge Miner", link: "https://example.com/doge-miner" },
-      { title: "Doodle Jump", link: "https://example.com/doodle-jump" },
-      { title: "Tetris", link: "https://example.com/tetris" },
-      { title: "Worlds Hardest Game", link: "https://example.com/worlds-hardest-game" },
-      { title: "XX142-B2.exe", link: "https://example.com/xx142-b2" },
-      { title: "You Are Jeff Bezos", link: "https://example.com/you-are-jeff-bezos" },
-      { title: "9007199254740992", link: "https://example.com/wordle" },
-      { title: "2048", link: "https://example.com/2048" },
-      { title: "Solitaire", link: "https://example.com/solitaire" },
-      { title: "Pong", link: "https://example.com/pong" },
-      { title: "Discord", link: "https://example.com/discord" },
-      { title: "Wordle", link: "https://example.com/wordle" },
+      { title: "Chrome Dino Game", link: "1 Unblocked Games/chrome-dino-game/index.html" },
+      { title: "Cookie Clicker", <a href="1 Unblocked Games/？Cookie Clicker 2.054 (100%)/Cookie Clicker">Play Cookie Clicker</a>
+      { title: "Connect 4", link: "games/connect-4/index.html" },
+      { title: "CSGO Clicker", link: "games/csgo-clicker/index.html" },
+      { title: "Doge Miner", link: "games/doge-miner/index.html" },
+      { title: "Doodle Jump", link: "games/doodle-jump/index.html" },
+      { title: "Tetris", link: "games/tetris/index.html" },
+      { title: "Worlds Hardest Game", link: "games/worlds-hardest-game/index.html" },
+      { title: "XX142-B2.exe", link: "games/xx142-b2/index.html" },
+      { title: "You Are Jeff Bezos", link: "games/you-are-jeff-bezos/index.html" },
+      { title: "9007199254740992", link: "games/9007199254740992/index.html" },
+      { title: "2048", link: "games/2048/index.html" },
+      { title: "Solitaire", link: "games/solitaire/index.html" },
+      { title: "Pong", link: "games/pong/index.html" },
+      { title: "Discord", link: "games/discord/index.html" },
+      { title: "Wordle", link: "games/wordle/index.html" },
     ];
+    
     const grid = document.querySelector(".games-grid");
     games.forEach(game => {
-      let card = document.createElement("a");
-      card.className = "game-card";
-      card.href = game.link;
-      card.target = "_blank";
-
+      // Create a div for the game widget
+      let card = document.createElement("div");
+      card.className = "game-widget";
+      // Use the onclick event to redirect to the local file
+      card.setAttribute("onclick", "redirectTo('" + game.link + "')");
+  
       let icon = document.createElement("img");
       icon.className = "game-icon";
-     icon.src = "https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&";
+      icon.src = "https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&";
       icon.alt = game.title + " icon";
-
+  
       let image = document.createElement("div");
       image.className = "game-image";
       image.appendChild(icon);
-
+  
       let text = document.createElement("div");
       text.className = "game-title";
       text.textContent = game.title;
-
+  
       card.appendChild(image);
       card.appendChild(text);
       grid.appendChild(card);
     });
+    
+    // Widgetbot, drag, resize, and modal functionality scripts remain unchanged.
     const widgetContainer = document.getElementById("widgetbot-container"),
           dragHandle = document.getElementById("drag-handle"),
           reopenWidgetBtn = document.getElementById("reopen-widget");
-
+    
     dragHandle.addEventListener("mousedown", function(e) {
       e.preventDefault();
       const rect = widgetContainer.getBoundingClientRect(),
@@ -261,7 +275,7 @@
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
     });
-
+    
     function minimizeWidget() {
       widgetContainer.style.display = "none";
       reopenWidgetBtn.style.display = "flex";
@@ -290,7 +304,7 @@
       }
     }
     reopenWidgetBtn.ondragstart = function() { return false; }
-
+    
     const resizer = document.getElementById("resizer");
     resizer.addEventListener("mousedown", initResize);
     function initResize(e) {
@@ -307,11 +321,11 @@
       window.removeEventListener("mousemove", Resize);
       window.removeEventListener("mouseup", stopResize);
     }
-
+    
     const infoBtn = document.getElementById("info-btn");
     const infoModal = document.getElementById("info-modal");
     const closeInfo = document.getElementById("close-info");
-
+    
     infoBtn.addEventListener("click", () => {
       infoModal.style.display = "flex";
     });
