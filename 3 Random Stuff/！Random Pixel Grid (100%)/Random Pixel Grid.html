@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #tile {
+            display: grid;
+            grid-template-columns: repeat(250, 4px);
+            grid-template-rows: repeat(250, 4px);
+            width: 1000px;
+            height: 1000px;
+        }
+        .pixel {
+            width: 4px;
+            height: 4px;
+        }
+        button, select {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="tile"></div>
+    <select id="mode" onchange="generateTile()">
+        <option value="random">Random Colors</option>
+        <option value="blackwhite">Black and White</option>
+        <option value="greyscale">Greyscale</option>
+        <option value="rgb">Red, Green, and Blue</option>
+    </select>
+
+    <script>
+        function generateRandomColor() {
+            return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+        }
+
+        function generateBlackWhite() {
+            return Math.random() > 0.5 ? '#000000' : '#FFFFFF';
+        }
+
+        function generateGreyscale() {
+            const value = Math.floor(Math.random() * 256).toString(16).padStart(2, '0');
+            return `#${value}${value}${value}`;
+        }
+
+        function generateRGB() {
+            const colors = ['#FF0000', '#00FF00', '#0000FF'];
+            return colors[Math.floor(Math.random() * 3)];
+        }
+
+        function generateTile() {
+            const tile = document.getElementById('tile');
+            const mode = document.getElementById('mode').value;
+            tile.innerHTML = ''; // Clear existing pixels
+
+            const colorFunction = {
+                random: generateRandomColor,
+                blackwhite: generateBlackWhite,
+                greyscale: generateGreyscale,
+                rgb: generateRGB
+            }[mode];
+
+            for (let i = 0; i < 250 * 250; i++) { // 250x250 = 62,500 pixels
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                pixel.style.backgroundColor = colorFunction();
+                pixel.addEventListener('click', () => update5x5(pixel));
+                tile.appendChild(pixel);
+            }
+        }
+
+        function update5x5(pixel) {
+            const tile = document.getElementById('tile');
+            const pixels = Array.from(tile.children);
+            const index = pixels.indexOf(pixel);
+            const cols = 250;
+            const colorFunction = {
+                random: generateRandomColor,
+                blackwhite: generateBlackWhite,
+                greyscale: generateGreyscale,
+                rgb: generateRGB
+            }[document.getElementById('mode').value];
+
+            const positions = [-2, -1, 0, 1, 2];
+            positions.forEach(rowOffset => {
+                positions.forEach(colOffset => {
+                    const neighborIndex = index + rowOffset * cols + colOffset;
+                    if (neighborIndex >= 0 && neighborIndex < pixels.length && 
+                        Math.floor(index / cols) + rowOffset >= 0 && 
+                        Math.floor(index / cols) + rowOffset < cols) {
+                        pixels[neighborIndex].style.backgroundColor = colorFunction();
+                    }
+                });
+            });
+        }
+
+        // Initial tile generation
+        generateTile();
+    </script>
+</body>
+</html>
