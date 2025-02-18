@@ -1,65 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Unblocked Games</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed">
-<style>
-body{margin:0;background:#111;color:#eee;font-family:Arial,sans-serif}header{background:#222;padding:20px;text-align:center;border-bottom:2px solid #444}header h1{margin:0;font-size:2rem}.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;padding:20px}.game-card{background:#1a1a1a;padding:10px;border:1px solid #333;transition:transform .2s;text-align:center}a{color:inherit;text-decoration:none}.game-card:hover{transform:scale(1.05)}.game-image{width:100%;height:150px;background:#333}#widgetbot-container{position:fixed;top:0;left:0;width:300px;height:200px;border:2px solid #e63946;background:#000;display:flex;flex-direction:column;transition:opacity 0.3s,transform 0.3s}.drag-handle{width:100%;height:20px;background:#e63946;cursor:move;display:flex;justify-content:space-between;align-items:center;padding:0 10px;color:#fff;font-weight:bold}.minimize-btn{cursor:pointer;background:#fff;color:#000;padding:2px 5px;border-radius:3px}#reopen-widget{position:fixed;top:0;left:0;width:50px;height:50px;background:red;color:#fff;font-size:12px;display:none;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;font-weight:bold;user-select:none}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Unblocked Games</title>
+  <link rel="icon" href="https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed">
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background: #222;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #444;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+   #info-btn {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: #e63946;
+      border: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .game-card {
+      background: #1a1a1a;
+      padding: 10px;
+      border: 1px solid #333;
+      transition: transform 0.2s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+    .game-card:hover {
+      transform: scale(1.05);
+    }
+    .game-image {
+      width: 100%;
+      height: 150px;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .game-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .game-title {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    #widgetbot-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 200px;
+      border: 0.125em solid #e63946;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      transition: opacity 0.3s, transform 0.3s;
+      overflow: hidden;
+    }
+    .drag-handle {
+      width: 100%;
+      height: 2em;
+      background: #e63946;
+      cursor: move;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5em;
+      color: #fff;
+      font-weight: bold;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+    .minimize-btn {
+      cursor: pointer;
+      background: #fff;
+      color: #000;
+      padding: 0.25em 0.5em;
+      border-radius: 0.25em;
+      font-size: 1em;
+      flex-shrink: 0;
+    }
+    widgetbot {
+      display: block;
+      flex-grow: 1;
+      width: 100%;
+      height: calc(100% - 2em); 
+    }
+    #resizer {
+      width: 15px;
+      height: 15px;
+      background: #e63946;
+      cursor: se-resize;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    #reopen-widget {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background: red;
+      color: #fff;
+      font-size: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+ #info-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #222;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      text-align: center;
+    }
+    .close-btn {
+      cursor: pointer;
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-<header><h1>Unblocked Games</h1></header>
-<main><div class="games-grid"></div></main>
+  <header>
+    <h1>Unblocked Games</h1>
+    <button id="info-btn">Info</button>
+  </header>
+  <main>
+    <div class="games-grid"></div>
+  </main>
 <div id="widgetbot-container">
-<div class="drag-handle" id="drag-handle">Drag<span class="minimize-btn" onclick="minimizeWidget()">–</span></div>
-<widgetbot server="1332392560097890314" channel="1334588205416185907"></widgetbot>
-</div>
-<div id="reopen-widget" onmousedown="startDrag(event)" onclick="reopenWidget()">Reopen</div>
-<script>
-const games=[{title:"Chrome Dino Game",link:"https://example.com/chrome-dino-game"},{title:"Cookie Clicker",link:"https://example.com/cookie-clicker"},{title:"Connect 4",link:"https://example.com/connect-4"},{title:"CSGO Clicker",link:"https://example.com/csgo-clicker"},{title:"Doge Miner",link:"https://example.com/doge-miner"},{title:"Doodle Jump",link:"https://example.com/doodle-jump"},{title:"Tetris",link:"https://example.com/tetris"},{title:"Worlds Hardest Game",link:"https://example.com/worlds-hardest-game"},{title:"XX142-B2.exe",link:"https://example.com/xx142-b2"} ,{title:"You Are Jeff Bezos",link:"https://example.com/you-are-jeff-bezos"},{title:"9007199254740992",link:"https://example.com/90"},{title:"Wordle",link:"https://example.com/wordle"},{title:"2048",link:"https://example.com/2048"},{title:"Solitaire",link:"https://example.com/solitaire"},{title:"Pong",link:"https://example.com/pong"},{title:"Discord",link:"https://example.com/discord"}];
-const grid=document.querySelector(".games-grid");
-games.forEach(game=>{
-let card=document.createElement("a");
-card.className="game-card";
-card.href=game.link;
-card.target="_blank";
-let image=document.createElement("div");
-image.className="game-image";
-let text=document.createElement("div");
-text.className="game-title";
-text.textContent=game.title;
-card.appendChild(image);
-card.appendChild(text);
-grid.appendChild(card)
-});
-const widgetContainer=document.getElementById("widgetbot-container"),
-dragHandle=document.getElementById("drag-handle"),
-reopenWidgetBtn=document.getElementById("reopen-widget");
-dragHandle.addEventListener("mousedown",function(e){
-e.preventDefault();
-const rect=widgetContainer.getBoundingClientRect(),
-offsetX=e.clientX-rect.left,
-offsetY=e.clientY-rect.top;
-function onMouseMove(e){widgetContainer.style.left=e.clientX-offsetX+"px";widgetContainer.style.top=e.clientY-offsetY+"px"}
-function onMouseUp(){document.removeEventListener("mousemove",onMouseMove);document.removeEventListener("mouseup",onMouseUp)}
-document.addEventListener("mousemove",onMouseMove);
-document.addEventListener("mouseup",onMouseUp)
-});
-function minimizeWidget(){widgetContainer.style.display="none";reopenWidgetBtn.style.display="flex"}
-function reopenWidget(){widgetContainer.style.display="flex";widgetContainer.style.top="0";widgetContainer.style.left="0";reopenWidgetBtn.style.display="none"}
-function startDrag(e){
-let elem=reopenWidgetBtn;
-let shiftX=e.clientX-elem.getBoundingClientRect().left,
-shiftY=e.clientY-elem.getBoundingClientRect().top;
-function moveAt(pageX,pageY){elem.style.left=pageX-shiftX+"px";elem.style.top=pageY-shiftY+"px"}
-function onMouseMove(e){moveAt(e.pageX,e.pageY)}
-document.addEventListener("mousemove",onMouseMove);
-elem.onmouseup=function(){document.removeEventListener("mousemove",onMouseMove);elem.onmouseup=null}
-}
-reopenWidgetBtn.ondragstart=function(){return false}
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+    <div class="drag-handle" id="drag-handle">
+      Drag
+      <span class="minimize-btn" onclick="minimizeWidget()">–</span>
+    </div>
+    <widgetbot server="1332392560097890314" channel="1334588205416185907"></widgetbot>
+    <div id="resizer"></div>
+  </div>
+  <div id="reopen-widget" onmousedown="startDrag(event)" onclick="reopenWidget()">Reopen</div>
+  <div id="info-modal">
+    <div class="modal-content">
+      <h2>About</h2>
+      <p>Let me know about bugs or broken games</p>
+	  <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
+	  <p>Github:  <a href="hhttps://github.com/FurtiveThomas/Unbore_Yourself_in_School">HERE</a></p>
+      <button class="close-btn" id="close-info">Close</button>
+    </div>
+  </div>
+  
+  <script>
+    const games = [
+      { title: "Chrome Dino Game", link: "https://example.com/chrome-dino-game" },
+      { title: "Cookie Clicker", link: "https://example.com/cookie-clicker" },
+      { title: "Connect 4", link: "https://example.com/connect-4" },
+      { title: "CSGO Clicker", link: "https://example.com/csgo-clicker" },
+      { title: "Doge Miner", link: "https://example.com/doge-miner" },
+      { title: "Doodle Jump", link: "https://example.com/doodle-jump" },
+      { title: "Tetris", link: "https://example.com/tetris" },
+      { title: "Worlds Hardest Game", link: "https://example.com/worlds-hardest-game" },
+      { title: "XX142-B2.exe", link: "https://example.com/xx142-b2" },
+      { title: "You Are Jeff Bezos", link: "https://example.com/you-are-jeff-bezos" },
+      { title: "9007199254740992", link: "https://example.com/wordle" },
+      { title: "2048", link: "https://example.com/2048" },
+      { title: "Solitaire", link: "https://example.com/solitaire" },
+      { title: "Pong", link: "https://example.com/pong" },
+      { title: "Discord", link: "https://example.com/discord" },
+      { title: "Wordle", link: "https://example.com/wordle" },
+    ];
+    const grid = document.querySelector(".games-grid");
+    games.forEach(game => {
+      let card = document.createElement("a");
+      card.className = "game-card";
+      card.href = game.link;
+      card.target = "_blank";
+
+      let icon = document.createElement("img");
+      icon.className = "game-icon";
+     icon.src = "https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&";
+      icon.alt = game.title + " icon";
+
+      let image = document.createElement("div");
+      image.className = "game-image";
+      image.appendChild(icon);
+
+      let text = document.createElement("div");
+      text.className = "game-title";
+      text.textContent = game.title;
+
+      card.appendChild(image);
+      card.appendChild(text);
+      grid.appendChild(card);
+    });
+    const widgetContainer = document.getElementById("widgetbot-container"),
+          dragHandle = document.getElementById("drag-handle"),
+          reopenWidgetBtn = document.getElementById("reopen-widget");
+
+    dragHandle.addEventListener("mousedown", function(e) {
+      e.preventDefault();
+      const rect = widgetContainer.getBoundingClientRect(),
+            offsetX = e.clientX - rect.left,
+            offsetY = e.clientY - rect.top;
+      function onMouseMove(e) {
+        widgetContainer.style.left = e.clientX - offsetX + "px";
+        widgetContainer.style.top = e.clientY - offsetY + "px";
+      }
+      function onMouseUp() {
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+      }
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+    });
+
+    function minimizeWidget() {
+      widgetContainer.style.display = "none";
+      reopenWidgetBtn.style.display = "flex";
+    }
+    function reopenWidget() {
+      widgetContainer.style.display = "flex";
+      widgetContainer.style.top = "0";
+      widgetContainer.style.left = "0";
+      reopenWidgetBtn.style.display = "none";
+    }
+    function startDrag(e) {
+      let elem = reopenWidgetBtn;
+      let shiftX = e.clientX - elem.getBoundingClientRect().left,
+          shiftY = e.clientY - elem.getBoundingClientRect().top;
+      function moveAt(pageX, pageY) {
+        elem.style.left = pageX - shiftX + "px";
+        elem.style.top = pageY - shiftY + "px";
+      }
+      function onMouseMove(e) {
+        moveAt(e.pageX, e.pageY);
+      }
+      document.addEventListener("mousemove", onMouseMove);
+      elem.onmouseup = function() {
+        document.removeEventListener("mousemove", onMouseMove);
+        elem.onmouseup = null;
+      }
+    }
+    reopenWidgetBtn.ondragstart = function() { return false; }
+
+    const resizer = document.getElementById("resizer");
+    resizer.addEventListener("mousedown", initResize);
+    function initResize(e) {
+      e.preventDefault();
+      window.addEventListener("mousemove", Resize);
+      window.addEventListener("mouseup", stopResize);
+    }
+    function Resize(e) {
+      const containerRect = widgetContainer.getBoundingClientRect();
+      widgetContainer.style.width = (e.clientX - containerRect.left) + "px";
+      widgetContainer.style.height = (e.clientY - containerRect.top) + "px";
+    }
+    function stopResize() {
+      window.removeEventListener("mousemove", Resize);
+      window.removeEventListener("mouseup", stopResize);
+    }
+
+    const infoBtn = document.getElementById("info-btn");
+    const infoModal = document.getElementById("info-modal");
+    const closeInfo = document.getElementById("close-info");
+
+    infoBtn.addEventListener("click", () => {
+      infoModal.style.display = "flex";
+    });
+    closeInfo.addEventListener("click", () => {
+      infoModal.style.display = "none";
+    });
+    infoModal.addEventListener("click", (e) => {
+      if(e.target === infoModal) {
+        infoModal.style.display = "none";
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
 </body>
 </html>
