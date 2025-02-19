@@ -199,6 +199,9 @@
     }
     .splash {
   font-size: 45px;
+  font-family: "Press Start 2P", serif;
+ 
+}
   <!--width: 100%;
   height: 100%; 
   filter: invert(0%) might use later<-->
@@ -217,13 +220,13 @@
 
 <body>
   <header>
-    <h1>Unbore Yourself In School</h1>
+    <h1>UYIS</h1>
     <button id="info-btn">Info&Proxy</button>
   </header>
   <main>
     
 	<div class="games-grid"></div>
-    <style> @import url('https://fonts.googleapis.com/css2?family=Play+2P&display=swap');} #splash-container { position: relative; width: 1%; height: 1000vh; } .splash { font-family: 'Play 2P', cursive; color: #FFDE00; position: absolute; white-space: nowrap; cursor: grab; animation: shake 7s infinite; } @keyframes shake { 0% { transform: translate(0,0); } 10% { transform: translate(-2px,2px); } 20% { transform: translate(2px,-2px); } 30% { transform: translate(-2px,2px); } 40% { transform: translate(2px,-2px); } 50% { transform: translate(-2px,2px); } 60% { transform: translate(2px,-2px); } 70% { transform: translate(-2px,2px); } 80% { transform: translate(2px,-2px); } 90% { transform: translate(-2px,2px); } 100% { transform: translate(0,0); } } </style> </head> <body> <div id="splash-container"></div> <script> var splashes = ["Hello World", "paptata ewwww", "", "I hate pickle", "Vapor is cool","Minecraft","Check Info&Proxy","i have proxy aids","unblockzone is skidded","braybray is a skid","proxy?","skibkid420 on discord","i ❤ notepad++","Love you mom", "balatro ❤", "men kissing","Void Network ❤","I HAVE A BOMB", "GLS V3","ERROR NO SPLASH TEXT","KRY ❤","❤","i have aids",":(","coleman has fat aids"]; var text = splashes[Math.floor(Math.random() * splashes.length)]; var splashContainer = document.getElementById("splash-container"); var d = document.createElement("div"); d.className = "splash"; d.innerText = text; var x = Math.random() * (window.innerWidth - 500); var y = window.innerHeight - 950 + Math.random() * 950; d.style.left = x + "px"; d.style.top = y + "px"; splashContainer.appendChild(d); d.addEventListener("mousedown", function(e) { d.style.cursor = "grabbing"; var ox = e.clientX - d.offsetLeft, oy = e.clientY - d.offsetTop; function m(e) { d.style.left = (e.clientX - ox) + "px"; d.style.top = (e.clientY - oy) + "px"; } function u() { document.removeEventListener("mousemove", m); document.removeEventListener("mouseup", u); d.style.cursor = "grab"; } document.addEventListener("mousemove", m); document.addEventListener("mouseup", u); }); </script> </body> </html>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');} #splash-container { position: relative; width: 1%; height: 1000vh; } .splash {  cursive; color: #FFDE00; position: absolute; white-space: nowrap; cursor: grab; animation: shake 7s infinite; } @keyframes shake { 0% { transform: translate(0,0); } 10% { transform: translate(-2px,2px); } 20% { transform: translate(2px,-2px); } 30% { transform: translate(-2px,2px); } 40% { transform: translate(2px,-2px); } 50% { transform: translate(-2px,2px); } 60% { transform: translate(2px,-2px); } 70% { transform: translate(-2px,2px); } 80% { transform: translate(2px,-2px); } 90% { transform: translate(-2px,2px); } 100% { transform: translate(0,0); } } </style> </head> <body> <div id="splash-container"></div> <script> var splashes = ["Hello World", "paptata ewwww", "", "I hate pickle", "Vapor is cool","Minecraft","Check Info&Proxy","i have proxy aids","unblockzone is skidded","braybray is a skid","proxy?","skibkid420 on discord","i ❤ notepad++","Love you mom", "balatro ❤", "men kissing","Void Network ❤","I HAVE A BOMB", "GLS V3","ERROR NO SPLASH TEXT","KRY ❤","❤","i have aids",":(","coleman has fat aids"]; var text = splashes[Math.floor(Math.random() * splashes.length)]; var splashContainer = document.getElementById("splash-container"); var d = document.createElement("div"); d.className = "splash"; d.innerText = text; var x = Math.random() * (window.innerWidth - 500); var y = window.innerHeight - 950 + Math.random() * 950; d.style.left = x + "px"; d.style.top = y + "px"; splashContainer.appendChild(d); d.addEventListener("mousedown", function(e) { d.style.cursor = "grabbing"; var ox = e.clientX - d.offsetLeft, oy = e.clientY - d.offsetTop; function m(e) { d.style.left = (e.clientX - ox) + "px"; d.style.top = (e.clientY - oy) + "px"; } function u() { document.removeEventListener("mousemove", m); document.removeEventListener("mouseup", u); d.style.cursor = "grab"; } document.addEventListener("mousemove", m); document.addEventListener("mouseup", u); }); </script> </body> </html>
 	<div class="bg"></div>
   </main>
   
