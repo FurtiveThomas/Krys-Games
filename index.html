@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  
+
 
     <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
 
@@ -35,7 +35,26 @@
     setTimeout(() => { window.location.href = "games.html"; }, 16000); //16s
   </script>
 
+    <script>
+        window.onload = function() {
+            document.getElementById('startupSound').play();
+        };
+    </script>
+</body>
+</html>
+<audio id="startupSound" src="snd/ps2_start_up.mp3" preload="auto"></audio>
 
+  <script>
+    const audio = document.getElementById('startupSound');
+    let played = false;
+
+    window.addEventListener('click', function() {
+      if (!played) {
+        audio.play();
+        played = true;
+      }
+    });
+  </script>
 
   <style>
     html { font-size: 15px; }

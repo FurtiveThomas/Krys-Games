@@ -9,6 +9,21 @@
   <meta name="unblocked games search terms" content="goguardianbypass, securly-bypass Unblocked, Discord, Youtube, unblocker, ubg365, unblocked games 76, classroom 6x, unblocked games wtf, unblocked games, cookie clicker, school work, keyword, school fun, GitHub, coolmathgames, free download, apk, html, index.html, discord, youtube, videos, free, hacked, iframe, google snake, Minecraft, blockblast, block blast, Mario, smash carts, keyword, unblocked games free 76 classroom 6x google sites, google sites, google site, rammerhead, nettleweb, chromebook-hack">
   <link rel="icon" href="https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&" type="image/png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed">
+  <audio id="startupSound" src="snd/partner_bg.mp3" preload="auto"></audio>
+
+  <script>
+    const audio = document.getElementById('startupSound');
+    let played = false;
+
+    window.addEventListener('click', function() {
+      if (!played) {
+        audio.play();
+        played = true;
+      
+	  
+	  }
+    });
+  </script>
   <style>
     body {
       margin: 1;
@@ -208,6 +223,23 @@
 }
 	#info-btn { right: 100px; }
     #proxy-btn { right: 20px; }
+	#volume-control {
+    margin: 10px;
+  }
+
+  #play-btn, #off-btn {
+    margin: 10px;
+  }
+
+  .settings-content {
+    padding: 20px;
+  }
+
+  .settings-content label {
+    display: block;
+    margin-bottom: 5px;
+  }
+	
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PERVFVWRG"></script>
   <script>
@@ -217,11 +249,43 @@
     gtag('config', 'G-8PERVFVWRG');
   </script>
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const audio = document.getElementById('startupSound');
+  const playButton = document.getElementById('play-btn');
+  const offButton = document.getElementById('off-btn');
+  const volumeSlider = document.getElementById('volume-slider');
+  let played = false;
 
+  window.addEventListener('click', function() {
+    if (!played) {
+      audio.play();
+      played = true;
+    }
+  });
+
+  playButton.addEventListener('click', function() {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  });
+
+  offButton.addEventListener('click', function() {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  volumeSlider.addEventListener('input', function() {
+    audio.volume = volumeSlider.value / 100;
+  });
+});
+</script>
 <body>
   <header>
     <h1>UYIS</h1>
-    <button id="info-btn">Info&Proxy</button>
+    <button id="info-btn">Settings&Proxy</button>
   </header>
   <main>
     
@@ -243,10 +307,23 @@
     <div class="modal-content">
       <h2>About</h2>
       <p>Let me know about bugs or broken games</p>
-      <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
+      <h3>Links</h3>
+	  <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
       <p>Github: <a href="https://github.com/FurtiveThomas/Unbore_Yourself_in_School">HERE</a></p>
-      <p>Proxy: <a href="proxy.html">HERE</a></p>
+      <h3>Pages</h3>
+	  <p>Proxy: <a href="proxy.html">HERE</a></p>
 	  <p>Partners: <a href="partners.html">HERE</a></p>
+	  h3>Music</h3>
+      <div class="settings-content">
+        <label for="play-btn">Play/Pause:</label>
+        <button id="play-btn">Play/Pause</button>
+
+        <label for="volume-slider">Volume:</label>
+        <input type="range" id="volume-slider" min="0" max="100" value="100">
+
+        <label for="off-btn">Stop Music:</label>
+        <button id="off-btn">Stop</button>
+      </div>
       <button class="close-btn" id="close-info">Close</button>
     </div>
   </div>
