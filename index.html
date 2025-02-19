@@ -176,7 +176,21 @@
       border-radius: 4px;
       margin-top: 10px;
     }
-  </style>
+	
+	 #proxy-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: none;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+
+#info-btn { right: 100px; }
+    #proxy-btn { right: 20px; }
+
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PERVFVWRG"></script>
 <script>
@@ -210,10 +224,22 @@
       <p>Let me know about bugs or broken games</p>
       <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
       <p>Github: <a href="https://github.com/FurtiveThomas/Unbore_Yourself_in_School">HERE</a></p>
+	  <p>Proxy: <a href="proxy.html" },">HERE</a></p>
       <button class="close-btn" id="close-info">Close</button>
     </div>
-  </div>
+  <script>
   
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8PERVFVWRG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8PERVFVWRG');
+</script>
+  </script>
   <script>
     function redirectTo(link) {
       window.location.href = link;
@@ -332,7 +358,10 @@
         infoModal.style.display = "none";
       }
     });
-  </script>
+  
+  
+  
+</script>
   <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
 </body>
 </html>

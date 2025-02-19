@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unbore Yourself In School</title>
+  <meta name="description" content="Access unblocked games, a secure proxy, and Discord for school. Enjoy educational fun with safe browsing, online games, and community chat.">
+  <meta name="keywords" content="unblocked games, proxy, discord, school games, secure browsing, online games, educational fun">
+  <link rel="icon" href="https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed">
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+    }
+    .search-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #222;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #444;
+      z-index: 1001;
+    }
+    .search-container input {
+      width: 70%;
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+    }
+    .search-container button {
+      margin-left: 10px;
+      padding: 8px 12px;
+      font-size: 16px;
+      border: none;
+      background: #e63946;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .games-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .game-widget {
+      background: #1a1a1a;
+      padding: 10px;
+      border: 1px solid #333;
+      transition: transform 0.2s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .game-widget:hover {
+      transform: scale(1.05);
+    }
+    .game-image {
+      width: 100%;
+      height: 150px;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .game-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .game-title {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    .proxy-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+    }
+	
+	
+	 #widgetbot-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 200px;
+      border: 0.125em solid #e63946;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      transition: opacity 0.3s, transform 0.3s;
+      overflow: hidden;
+    }
+    .drag-handle {
+      width: 100%;
+      height: 2em;
+      background: #e63946;
+      cursor: move;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5em;
+      color: #fff;
+      font-weight: bold;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+    .minimize-btn {
+      cursor: pointer;
+      background: #fff;
+      color: #000;
+      padding: 0.25em 0.5em;
+      border-radius: 0.25em;
+      font-size: 1em;
+      flex-shrink: 0;
+    }
+    widgetbot {
+      display: block;
+      flex-grow: 1;
+      width: 100%;
+      height: calc(100% - 2em); 
+    }
+    #resizer {
+      width: 15px;
+      height: 15px;
+      background: #e63946;
+      cursor: se-resize;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    #reopen-widget {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background: red;
+      color: #fff;
+      font-size: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+    .proxy-drag-handle {
+      height: 40px;
+      background: #e63946;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: move;
+      padding: 0 10px;
+    }
+    .proxy-drag-handle button {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .proxy-iframe {
+      flex-grow: 1;
+      border: none;
+    }
+    #reopen-proxy {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 50px;
+      height: 50px;
+      background: red;
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1002;
+    }
+    .discord-container {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      width: 300px;
+      height: 200px;
+      border: 2px solid #e63946;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    .discord-drag-handle {
+      height: 40px;
+      background: #e63946;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: move;
+      padding: 0 10px;
+    }
+    .discord-drag-handle span {
+      font-weight: bold;
+    }
+    .discord-embed {
+      flex-grow: 1;
+    }  
+    .close-btn {
+      cursor: pointer;
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+   }
+    #reopen-widget {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background: red;
+      color: #fff;
+      font-size: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+    #info-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;  }
+    #resizer {
+      width: 15px;
+      height: 15px;
+      background: #e63946;
+      cursor: se-resize;
+      position: absolute;
+      bottom: 0;
+      right: 0; }
+    
+	.drag-handle {
+      width: 100%;
+      height: 2em;
+      background: #e63946;
+      cursor: move;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5em;
+      color: #fff;
+      font-weight: bold;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+    .minimize-btn {
+      cursor: pointer;
+      background: #fff;
+      color: #000;
+      padding: 0.25em 0.5em;
+      border-radius: 0.25em;
+      font-size: 1em;
+      flex-shrink: 0;
+   }
+    #info-btn {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: #e63946;
+      border: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+	  }
+    #info-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+	  }
+	 
+	 
+	  }
+    #info-btn {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  background: #e63946;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1000; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  position: relative;
+  z-index: 1001;
+}
+  
+  </style>
+</head>
+<body>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8PERVFVWRG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8PERVFVWRG');
+</script>
+</head>
+<body>
+  <header>
+   
+    <button id="info-btn">Info</button>
+  </header>
+  
+  <div class="search-container">
+    <input type="text" id="urlInput" placeholder="Enter a website URL starting with https://">
+    <button onclick="loadWebsite()">Go</button>
+  </div>
+  <div class="games-grid"></div>
+  <div class="proxy-container" id="proxy-container">
+    <div class="proxy-drag-handle" id="proxy-drag-handle">
+      Proxy
+      <button id="close-proxy" onclick="closeProxy()">Close</button>
+    </div>
+    <iframe id="proxyFrame" class="proxy-iframe" src=""></iframe>
+  </div>
+  <div id="reopen-proxy" onclick="openProxy()">Open</div>
+ <div id="widgetbot-container">
+    <div class="drag-handle" id="drag-handle">
+      Drag
+      <span class="minimize-btn" onclick="minimizeWidget()">–</span>
+    </div>
+    <widgetbot server="1332392560097890314" channel="1334588205416185907"></widgetbot>
+    <div id="resizer"></div>
+  </div>
+  <div id="reopen-widget" onmousedown="startDrag(event)" onclick="reopenWidget()">Reopen</div>
+  <<div id="info-modal">
+  <div class="modal-content" style="background: #222; padding: 20px; border-radius: 8px; text-align: center;">
+    <h2>About</h2>
+    <p>Let me know about bugs or broken games</p>
+    <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
+    <p>Github: <a href="https://github.com/FurtiveThomas/Unbore_Yourself_in_School">HERE</a></p>
+    <p>Home: <a href="index.html">HERE</a></p>
+    <button class="close-btn" id="close-info">Close</button>
+  </div>
+</div>
+
+  <script>
+    document.getElementById("info-btn").addEventListener("click", function() {
+  document.getElementById("info-modal").style.display = "flex";
+});
+
+document.getElementById("close-info").addEventListener("click", function() {
+  document.getElementById("info-modal").style.display = "none";
+});
+
+	
+	
+	function loadWebsite(){
+      var input = document.getElementById("urlInput").value.trim();
+      if(input.indexOf("https://") === 0){
+        var urlWithoutProtocol = input.replace(/^https:\/\/|\/$/g, "");
+        document.getElementById("proxyFrame").src = "https://" + urlWithoutProtocol;
+      } else {
+        alert("Please enter a valid website URL starting with https://");
+      }
+    }
+    function closeProxy(){
+      document.getElementById("proxy-container").style.display = "none";
+      document.getElementById("reopen-proxy").style.display = "flex";
+    }
+    function openProxy(){
+      document.getElementById("proxy-container").style.display = "flex";
+      document.getElementById("reopen-proxy").style.display = "none";
+    }
+    function minimizeDiscord(){
+      document.getElementById("discord-container").style.display = "none";
+    }
+    function makeDraggable(element, handle){
+      handle.addEventListener("mousedown", function(e){
+        var rect = element.getBoundingClientRect();
+        var offsetX = e.clientX - rect.left;
+        var offsetY = e.clientY - rect.top;
+        function onMouseMove(e){
+          element.style.left = (e.clientX - offsetX) + "px";
+          element.style.top = (e.clientY - offsetY) + "px";
+          element.style.position = "fixed";
+        }
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", function(){
+          document.removeEventListener("mousemove", onMouseMove);
+        }, {once: true});
+      });
+    }
+    makeDraggable(document.getElementById("proxy-container"), document.getElementById("proxy-drag-handle"));
+    makeDraggable(document.getElementById("discord-container"), document.getElementById("discord-drag-handle"));
+    var games = [
+      {"title": "Chrome Dino Game", "link": "1-Unblocked-Games/chrome-dino"},
+      {"title": "Cookie Clicker", "link": "1-Unblocked-Games/Cookie-Clicker-2.054/Cookie-Clicker"},
+      {"title": "Connect 4", "link": "1-Unblocked-Games/Connect-4/connect4.html"},
+      {"title": "CSGO Clicker", "link": "1-Unblocked-Games/CSGO-Clicker/index.html"},
+      {"title": "Doge Miner", "link": "1-Unblocked-Games/Doge-Miner/index.html"},
+      {"title": "Doodle Jump", "link": "1-Unblocked-Games/Doodle-Jump/index.html"},
+      {"title": "Tetris", "link": "1-Unblocked-Games/Tetris/index.html"},
+      {"title": "Worlds Hardest Game", "link": "1-Unblocked-Games/Worlds-Hardest-Game/index.html"},
+      {"title": "XX142-B2.exe", "link": "1-Unblocked-Games/XX142-B2.exe/index.html"},
+      {"title": "You Are Jeff Bezos", "link": "1-Unblocked-Games/You-Are-Jeff-Bezos/index.html"},
+      {"title": "9007199254740992", "link": "1-Unblocked-Games/9007199254740992/index.html"},
+      {"title": "2048", "link": "1-Unblocked-Games/2048/index.html"},
+      {"title": "Solitaire", "link": "1-Unblocked-Games/Solitaire/index.html"},
+      {"title": "Pong", "link": "1-Unblocked-Games/Pong/Pong.html"},
+      {"title": "Discord", "link": "2-Blocking-Bypasses/Unblocked-Discord/Unblocked-Discord-V2.0/Unblocked-Discord.html"},
+      {"title": "Wordle", "link": "1-Unblocked-Games/Wordle/index.html"}
+    ];
+    var grid = document.querySelector(".games-grid");
+    games.forEach(function(game){
+      var card = document.createElement("div");
+      card.className = "game-widget";
+      card.onclick = function(){ window.location.href = game.link; };
+      var image = document.createElement("div");
+      image.className = "game-image";
+      var icon = document.createElement("img");
+      icon.className = "game-icon";
+      icon.src = "https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png";
+      icon.alt = game.title + " icon";
+      image.appendChild(icon);
+      var text = document.createElement("div");
+      text.className = "game-title";
+      text.textContent = game.title;
+      card.appendChild(image);
+      card.appendChild(text);
+      grid.appendChild(card);
+    });
+  
+   const widgetContainer = document.getElementById("widgetbot-container"),
+          dragHandle = document.getElementById("drag-handle"),
+          reopenWidgetBtn = document.getElementById("reopen-widget");
+    dragHandle.addEventListener("mousedown", function(e) {
+      e.preventDefault();
+      const rect = widgetContainer.getBoundingClientRect(),
+            offsetX = e.clientX - rect.left,
+            offsetY = e.clientY - rect.top;
+      function onMouseMove(e) {
+        widgetContainer.style.left = e.clientX - offsetX + "px";
+        widgetContainer.style.top = e.clientY - offsetY + "px";
+      }
+      function onMouseUp() {
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+      }
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+    });
+    function minimizeWidget() {
+      widgetContainer.style.display = "none";
+      reopenWidgetBtn.style.display = "flex";
+    }
+    function reopenWidget() {
+      widgetContainer.style.display = "flex";
+      widgetContainer.style.top = "0";
+      widgetContainer.style.left = "0";
+      reopenWidgetBtn.style.display = "none";
+    }
+    function startDrag(e) {
+      let elem = reopenWidgetBtn;
+      let shiftX = e.clientX - elem.getBoundingClientRect().left,
+          shiftY = e.clientY - elem.getBoundingClientRect().top;
+      function moveAt(pageX, pageY) {
+        elem.style.left = pageX - shiftX + "px";
+        elem.style.top = pageY - shiftY + "px";
+      }
+      function onMouseMove(e) {
+        moveAt(e.pageX, e.pageY);
+      }
+      document.addEventListener("mousemove", onMouseMove);
+      elem.onmouseup = function() {
+        document.removeEventListener("mousemove", onMouseMove);
+        elem.onmouseup = null;
+      }
+    }
+    reopenWidgetBtn.ondragstart = function() { return false; }
+    const resizer = document.getElementById("resizer");
+    resizer.addEventListener("mousedown", initResize);
+    function initResize(e) {
+      e.preventDefault();
+      window.addEventListener("mousemove", Resize);
+      window.addEventListener("mouseup", stopResize);
+    }
+    function Resize(e) {
+      const containerRect = widgetContainer.getBoundingClientRect();
+      widgetContainer.style.width = (e.clientX - containerRect.left) + "px";
+      widgetContainer.style.height = (e.clientY - containerRect.top) + "px";
+    }
+    function stopResize() {
+      window.removeEventListener("mousemove", Resize);
+      window.removeEventListener("mouseup", stopResize);
+    }
+    const infoBtn = document.getElementById("info-btn");
+    const infoModal = document.getElementById("info-modal");
+    const closeInfo = document.getElementById("close-info");
+    infoBtn.addEventListener("click", () => {
+      infoModal.style.display = "flex";
+    });
+    closeInfo.addEventListener("click", () => {
+      infoModal.style.display = "none";
+    });
+    infoModal.addEventListener("click", (e) => {
+      if(e.target === infoModal) {
+        infoModal.style.display = "none";
+      }
+    });
+  
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PERVFVWRG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-8PERVFVWRG");
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+</body>
+</html>
