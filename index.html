@@ -4,20 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Unbore Your Self In School</title>
-  <meta name="<h4> Unblocked, unblocker, school games, Youtube, Discord, ubg365, unblocked games 76, classroom 6x, unblocked games wtf, unblocked games, cookie clicker, school work, keyword, school fun, GitHub, coolmathgames, free download, apk, html, index.html, discord, youtube, videos, free, hacked, iframe, google snake, Minecraft, blockblast, block blast, Mario, smash carts, unblocked games free 76 classroom 6x google sites, google sites, google site, chromebook hack </h4>">
-
-<meta name="description" content="goguardianbypass, securly-bypass Unblocked, Discord, Youtube, unblocker, ubg365, unblocked games 76, classroom 6x, unblocked games wtf, unblocked games, cookie clicker, school work, keyword, school fun, GitHub, coolmathgames, free download, apk, html, index.html, discord, youtube, videos, free, hacked, iframe, google snake, Minecraft, blockblast, block blast, Mario, smash carts, unblocked games free 76 classroom 6x google sites, google sites, google site, rammerhead, nettleweb, chromebook-hack,">
-<meta name="keywords" content="goguardianbypass, securly-bypass Unblocked, Discord, Youtube, unblocker, ubg365, unblocked games 76, classroom 6x, unblocked games wtf, unblocked games, cookie clicker, school work, keyword, school fun, GitHub, coolmathgames, free download, apk, html, index.html, discord, youtube, videos, free, hacked, iframe, google snake, Minecraft, blockblast, block blast, Mario, smash carts, unblocked games free 76 classroom 6x google sites, google sites, google site, rammerhead, nettleweb, chromebook-hack,">
-<meta name="unblocked games search terms" content="goguardianbypass, securly-bypass Unblocked, Discord, Youtube, unblocker, ubg365, unblocked games 76, classroom 6x, unblocked games wtf, unblocked games, cookie clicker, school work, keyword, school fun, GitHub, coolmathgames, free download, apk, html, index.html, discord, youtube, videos, free, hacked, iframe, google snake, Minecraft, blockblast, block blast, Mario, smash carts, keyword, unblocked games free 76 classroom 6x google sites, google sites, google site, rammerhead, nettleweb, chromebook-hack, ">
-  
+  <meta name="description" content="goguardianbypass, securly-bypass Unblocked, Discord, Youtube, unblocker, ubg365, unblocked games 76, classroom 6x, unblocked games wtf, unblocked games, cookie clicker, school work, keyword, school fun, GitHub, coolmathgames, free download, apk, html, index.html, discord, youtube, videos, free, hacked, iframe, google snake, Minecraft, blockblast, block blast, Mario, smash carts, unblocked games free 76 classroom 6x google sites, google sites, google site, rammerhead, nettleweb, chromebook-hack">
+  <meta name="keywords" content="goguardianbypass, securly-bypass Unblocked, Discord, Youtube, unblocker, ubg365, unblocked games 76, classroom 6x, unblocked games wtf, unblocked games, cookie clicker, school work, keyword, school fun, GitHub, coolmathgames, free download, apk, html, index.html, discord, youtube, videos, free, hacked, iframe, google snake, Minecraft, blockblast, block blast, Mario, smash carts, unblocked games free 76 classroom 6x google sites, google sites, google site, rammerhead, nettleweb, chromebook-hack">
+  <meta name="unblocked games search terms" content="goguardianbypass, securly-bypass Unblocked, Discord, Youtube, unblocker, ubg365, unblocked games 76, classroom 6x, unblocked games wtf, unblocked games, cookie clicker, school work, keyword, school fun, GitHub, coolmathgames, free download, apk, html, index.html, discord, youtube, videos, free, hacked, iframe, google snake, Minecraft, blockblast, block blast, Mario, smash carts, keyword, unblocked games free 76 classroom 6x google sites, google sites, google site, rammerhead, nettleweb, chromebook-hack">
   <link rel="icon" href="https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&" type="image/png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed">
   <style>
     body {
-      margin: 0;
+      margin: 1;
       background: #111;
-      color: #eee; 
+      color: #eee;
       font-family: Arial, sans-serif;
+    }
+    .bg {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      width: 200%;
+      height: 200vh;
+      background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+      background-repeat: repeat;
+      animation: bg-animation 0.2s infinite;
+      opacity: 0.9;
+      visibility: visible;
+    }
+    @keyframes bg-animation {
+      0% { transform: translate(0,0) }
+      10% { transform: translate(-5%,-5%) }
+      20% { transform: translate(-10%,5%) }
+      30% { transform: translate(5%,-10%) }
+      40% { transform: translate(-5%,15%) }
+      50% { transform: translate(-10%,5%) }
+      60% { transform: translate(15%,0) }
+      70% { transform: translate(0,10%) }
+      80% { transform: translate(-15%,0) }
+      90% { transform: translate(10%,5%) }
+      100% { transform: translate(5%,0) }
     }
     header {
       background: #222;
@@ -29,6 +53,11 @@
     header h1 {
       margin: 0;
       font-size: 2rem;
+      transition: transform 0.2s;
+      text-align: center;
+    }
+    header h1:hover {
+      transform: scale(1.05);
     }
     #info-btn {
       position: absolute;
@@ -47,7 +76,9 @@
       gap: 15px;
       padding: 20px;
     }
-
+    .games-grid:has(.game-widget:hover) .game-widget:not(:hover) {
+      transform: scale(0.95);
+    }
     .game-widget {
       background: #1a1a1a;
       padding: 10px;
@@ -58,9 +89,12 @@
       flex-direction: column;
       align-items: center;
       cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
     }
     .game-widget:hover {
       transform: scale(1.05);
+      z-index: 1;
     }
     .game-image {
       width: 100%;
@@ -69,17 +103,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 10px;
     }
     .game-icon {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      border-radius: 10px;
     }
     .game-title {
       margin-top: 10px;
       font-size: 1rem;
     }
-
     #widgetbot-container {
       position: fixed;
       top: 0;
@@ -120,7 +155,7 @@
       display: block;
       flex-grow: 1;
       width: 100%;
-      height: calc(100% - 2em); 
+      height: calc(100% - 2em);
     }
     #resizer {
       width: 15px;
@@ -176,30 +211,28 @@
       border-radius: 4px;
       margin-top: 10px;
     }
-	
-	 #proxy-modal {
+    #proxy-modal {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       display: none;
       background: rgba(0, 0, 0, 0.5);
       justify-content: center;
       align-items: center;
       z-index: 1000;
-
-#info-btn { right: 100px; }
+    }
+    #info-btn { right: 100px; }
     #proxy-btn { right: 20px; }
-
-</style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8PERVFVWRG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8PERVFVWRG');
-</script>
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PERVFVWRG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8PERVFVWRG');
+  </script>
 </head>
 <body>
   <header>
@@ -208,6 +241,7 @@
   </header>
   <main>
     <div class="games-grid"></div>
+    <div class="bg"></div>
   </main>
   <div id="widgetbot-container">
     <div class="drag-handle" id="drag-handle">
@@ -224,43 +258,31 @@
       <p>Let me know about bugs or broken games</p>
       <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
       <p>Github: <a href="https://github.com/FurtiveThomas/Unbore_Yourself_in_School">HERE</a></p>
-	  <p>Proxy: <a href="proxy.html" },">HERE</a></p>
+      <p>Proxy: <a href="proxy.html">HERE</a></p>
       <button class="close-btn" id="close-info">Close</button>
     </div>
-  <script>
-  
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8PERVFVWRG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8PERVFVWRG');
-</script>
-  </script>
+  </div>
   <script>
     function redirectTo(link) {
       window.location.href = link;
     }
     const games = [
-      { title: "Chrome Dino Game", link: "1-Unblocked-Games/chrome-dino" },
-      { title: "Cookie Clicker", link: "1-Unblocked-Games/Cookie-Clicker-2.054/Cookie-Clicker" },
-      { title: "Connect 4", link: "1-Unblocked-Games/Connect-4/connect4.html" },
-      { title: "CSGO Clicker", link: "1-Unblocked-Games/CSGO-Clicker/index.html" },
-      { title: "Doge Miner", link: "1-Unblocked-Games/Doge-Miner/index.html" },
-      { title: "Doodle Jump", link: "1-Unblocked-Games/Doodle-Jump/index.html" },
-      { title: "Tetris", link: "1-Unblocked-Games/Tetris/index.html" },
-      { title: "Worlds Hardest Game", link: "1-Unblocked-Games/Worlds-Hardest-Game/index.html" },
-      { title: "XX142-B2.exe", link: "1-Unblocked-Games/XX142-B2.exe/index.html" },
-      { title: "You Are Jeff Bezos", link: "1-Unblocked-Games/You-Are-Jeff-Bezos/index.html" },
-      { title: "9007199254740992", link: "1-Unblocked-Games/9007199254740992/index.html" },
-      { title: "2048", link: "1-Unblocked-Games/2048/index.html" },
-      { title: "Solitaire", link: "1-Unblocked-Games/Solitaire/index.html" },
-      { title: "Pong", link: "1-Unblocked-Games/Pong/Pong.html" },
-      { title: "Discord", link: "2-Blocking-Bypasses/Unblocked-Discord/Unblocked-Discord-V2.0/Unblocked-Discord.html" },
-      { title: "Wordle", link: "1-Unblocked-Games/Wordle/index.html" }
+      { title: "Chrome Dino Game", link: "1-Unblocked-Games/chrome-dino", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341811868578222120/image.png?ex=67b75b2f&is=67b609af&hm=54301f540d4e60a2d7f27e096c9e0b3207bdd414fe5935577ec29cbc660e7df9&" },
+      { title: "Cookie Clicker", link: "1-Unblocked-Games/Cookie-Clicker-2.054/Cookie-Clicker", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341812050636046407/image.png?ex=67b75b5a&is=67b609da&hm=5d0eb2e17ef574e82f3e16eaffc0771756f38b4d45e75fca97bba0c4a95aab5b&" },
+      { title: "Connect 4", link: "1-Unblocked-Games/Connect-4/connect4.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341812576299909241/image.png?ex=67b75bd7&is=67b60a57&hm=2d5ebb6f255323d0d45103f3ef93c5be7ecb9965675036e6a2eaa6e75ab651f8&" },
+      { title: "CSGO Clicker", link: "1-Unblocked-Games/CSGO-Clicker/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341812208224440360/image.png?ex=67b75b80&is=67b60a00&hm=31b6038ef054d918d5239e01d77bddfca8758598758de61d0d091d0970b056c1&" },
+      { title: "Doge Miner", link: "1-Unblocked-Games/Doge-Miner/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341812779824447509/image.png?ex=67b75c08&is=67b60a88&hm=d0f9ad599beb47d17071ccc93f7c532fba6e5b7ab3303a9404e4f7b4fd161aec&" },
+      { title: "Doodle Jump", link: "1-Unblocked-Games/Doodle-Jump/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341812935386730588/image.png?ex=67b75c2d&is=67b60aad&hm=cbc943401d65c5f140dda75e449252a51acc0b4aa7ad31c60182c83d43472e9f&" },
+      { title: "Tetris", link: "1-Unblocked-Games/Tetris/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341813127003504731/image.png?ex=67b75c5b&is=67b60adb&hm=cd56086e598861c3828608faa0611051e3816a30c9a912f87f715296f24725b3&" },
+      { title: "Worlds Hardest Game", link: "1-Unblocked-Games/Worlds-Hardest-Game/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341813377797984337/image.png?ex=67b75c96&is=67b60b16&hm=07dd351b2f62f355db704ba8a78d97e8a3f8df53e9796e929930bc30adcbb01b&" },
+      { title: "XX142-B2.exe", link: "1-Unblocked-Games/XX142-B2.exe/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341813552125837332/image.png?ex=67b75cc0&is=67b60b40&hm=530066d8ecf4ba15802069e53c8947f511142bf271e057b1341c912dcf01a805&" },
+      { title: "You Are Jeff Bezos", link: "1-Unblocked-Games/You-Are-Jeff-Bezos/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341813828463104000/image.png?ex=67b75d02&is=67b60b82&hm=c179f170c29bad9eb7b4ae0f9ddb674edcc7edbcf15de038074192ee58d4e3d2&" },
+      { title: "9007199254740992", link: "1-Unblocked-Games/9007199254740992/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341813954866974770/image.png?ex=67b75d20&is=67b60ba0&hm=495b01ded7163bd2c9acdd68e5d777825857928d307e7610d7dae73cb1e7a7b5&" },
+      { title: "2048", link: "1-Unblocked-Games/2048/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341814112904019978/image.png?ex=67b75d46&is=67b60bc6&hm=6d0508992875109e821d354656df92fadf443e41b9789325211b9917f420483c&" },
+      { title: "Solitaire", link: "1-Unblocked-Games/Solitaire/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341814267036303484/image.png?ex=67b75d6a&is=67b60bea&hm=326ecc12b9d0dc6376b7dca692f4d9974042cee8f63fb29383db571c04951c50&" },
+      { title: "Pong", link: "1-Unblocked-Games/Pong/Pong.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341814401279201374/image.png?ex=67b75d8a&is=67b60c0a&hm=7279295f19caed41c8fac359b405c0a52a8232b80ea811f044c7baf39a278ee2&" },
+      { title: "Discord", link: "2-Blocking-Bypasses/Unblocked-Discord/Unblocked-Discord-V2.0/Unblocked-Discord.html", icon: "https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&" },
+      { title: "Wordle", link: "1-Unblocked-Games/Wordle/index.html", icon: "https://cdn.discordapp.com/attachments/1334588205416185907/1341814524876951674/image.png?ex=67b75da8&is=67b60c28&hm=dbbf6558b27e7b0ee4e1d6ea5b961bf0c8cb4305ffb32d811b7fcaf37de0ace0&" }
     ];
     const grid = document.querySelector(".games-grid");
     games.forEach(game => {
@@ -269,7 +291,7 @@
       card.setAttribute("onclick", "redirectTo('" + game.link + "')");
       let icon = document.createElement("img");
       icon.className = "game-icon";
-      icon.src = "https://cdn.discordapp.com/attachments/1291845008512651376/1341446428324659230/Screenshot_2025-02-14_140814.png?ex=67b606d7&is=67b4b557&hm=5bad1e2108965b265652b4eab0dcced5d923e1c9741849ceedec6a8a97d5c6a5&";
+      icon.src = game.icon;
       icon.alt = game.title + " icon";
       let image = document.createElement("div");
       image.className = "game-image";
@@ -358,10 +380,7 @@
         infoModal.style.display = "none";
       }
     });
-  
-  
-  
-</script>
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
 </body>
 </html>

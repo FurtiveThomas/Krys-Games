@@ -12,8 +12,7 @@ const wordList = [
     "witty", "angry", "lunar", "forum", "alert", "marsh", "chief", "beast", "moody", "grain", "zesty", 
     "frost", "crime", "proud", "zonal", "wedge", "vital", "thumb", "urban", "plush", "onset", "nifty", 
     "pouch", "petty", "otter", "pearl", "quill", "spicy", "tasty", "suite", "trend", "vague", "widow"
-    // Add as many 5-letter words as you want, up to 5000 words
-    // ...
+    
 ];
 
 const maxGuesses = 6;
