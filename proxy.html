@@ -345,7 +345,52 @@ header {
   position: relative;
   z-index: 1001;
 }
-  
+  }
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .games-grid:has(.game-widget:hover) .game-widget:not(:hover) {
+      transform: scale(0.95);
+    }
+    .game-widget {
+      background: #1a1a1a;
+      padding: 10px;
+      border: 1px solid #333;
+      transition: transform 0.2s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .game-widget:hover {
+      transform: scale(1.05);
+      z-index: 1;
+    }
+    .game-image {
+      width: 100%;
+      height: 150px;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+    .game-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .game-title {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
