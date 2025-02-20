@@ -27,7 +27,7 @@
       background: #111;
       color: #eee;
       font-family: Arial, sans-serif;
-    
+     overflow: hidden;
     }
     header {
       background: #222;
@@ -35,16 +35,19 @@
       text-align: center;
       border-bottom: 2px solid #444;
       position: relative;
-    }
+     overflow: hidden;
+	}
     header h1 {
       margin: 0;
       font-size: 2rem;
       transition: transform 0.2s;
       text-align: center;
-    }
+     overflow: hidden;
+	}
     header h1:hover {
       transform: scale(1.05);
-    }
+     overflow: hidden;
+	}
     #info-btn {
       position: absolute;
       right: 20px;
@@ -55,7 +58,8 @@
       padding: 5px 10px;
       border-radius: 4px;
       cursor: pointer;
-    }
+     overflow: hidden;
+	}
     .games-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -301,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <div id="reopen-widget" onmousedown="startDrag(event)" onclick="reopenWidget()">Reopen</div>
   <div id="info-modal">
     <div class="modal-content">
-      <h2>About</h2>
+     
       <p>Let me know about bugs or broken games</p>
       <h3>Links</h3>
 	  <p>Discord: <a href="https://discord.gg/s9gtBJ8cYm">HERE</a></p>
