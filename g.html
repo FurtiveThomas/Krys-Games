@@ -119,7 +119,8 @@ opacity: 1.0 !important;
   flex-direction: column;
   transition: opacity 0.3s, transform 0.3s;
   overflow: hidden;
-  z-index: 2;
+   z-index: 99999;
+
 }
 .drag-handle {
   width: 100%;
@@ -134,6 +135,7 @@ opacity: 1.0 !important;
   font-weight: bold;
   box-sizing: border-box;
   flex-shrink: 0;
+ z-index: 99999;
 }
 .minimize-btn {
   cursor: pointer;
@@ -143,12 +145,14 @@ opacity: 1.0 !important;
   border-radius: 0.25em;
   font-size: 1em;
   flex-shrink: 0;
+ z-index: 99999;
 }
 widgetbot {
   display: block;
   flex-grow: 1;
   width: 100%;
   height: calc(100% - 2em);
+ z-index: 99999;
 }
 #resizer {
   width: 15px;
@@ -158,6 +162,7 @@ widgetbot {
   position: absolute;
   bottom: 0;
   right: 0;
+ z-index: 99999;
 }
 #reopen-widget {
   position: fixed;
@@ -175,7 +180,9 @@ widgetbot {
   cursor: pointer;
   font-weight: bold;
   user-select: none;
+ z-index: 99999;
 }
+
 #info-modal {
   position: fixed;
   top: 0;
@@ -186,7 +193,7 @@ widgetbot {
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 99999;
 }
 .modal-content {
   background: #222;
